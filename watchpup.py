@@ -35,7 +35,8 @@ def callback(event):
     if not event.name.startswith(src):
         print "Ignoring", event.name
         return
-    if event.name.startswith(os.path.abspath('.git') + '/') or event.name.endswith('~'):
+    gitpath = os.path.abspath('.git')
+    if event.name == gitpath or event.name.startswith(gitpath + '/') or event.name.endswith('~'):
         print "Ignoring", event.name
         return
     try:
